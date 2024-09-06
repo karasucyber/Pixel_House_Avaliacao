@@ -1,0 +1,8 @@
+/home/karasu/Pixel_House_Avaliacao/PixelHouse/obj/Debug/net7.0/PixelHouse.csproj.AssemblyReference.cache
+/home/karasu/Pixel_House_Avaliacao/PixelHouse/obj/Debug/net7.0/PixelHouse.GeneratedMSBuildEditorConfig.editorconfig
+/home/karasu/Pixel_House_Avaliacao/PixelHouse/obj/Debug/net7.0/PixelHouse.AssemblyInfoInputs.cache
+/home/karasu/Pixel_House_Avaliacao/PixelHouse/obj/Debug/net7.0/PixelHouse.AssemblyInfo.cs
+/home/karasu/Pixel_House_Avaliacao/PixelHouse/obj/Debug/net7.0/PixelHouse.csproj.CoreCompileInputs.cache
+/home/karasu/Pixel_House_Avaliacao/PixelHouse/obj/Debug/net7.0/PixelHouse.MvcApplicationPartsAssemblyInfo.cache
+/home/karasu/Pixel_House_Avaliacao/PixelHouse/obj/Debug/net7.0/PixelHouse.RazorAssemblyInfo.cache
+/home/karasu/Pixel_House_Avaliacao/PixelHouse/obj/Debug/net7.0/PixelHouse.RazorAssemblyInfo.cs
