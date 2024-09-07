@@ -32,6 +32,14 @@ build_metadata.AdditionalFiles.CssScope =
 build_metadata.AdditionalFiles.TargetPath = Vmlld3MvUHJvZHV0b3MvQ3JlYXRlLmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
+[/home/karasu/Pixel_House_Avaliacao/PixelHouse/Views/Produtos/Delete.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3MvUHJvZHV0b3MvRGVsZXRlLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[/home/karasu/Pixel_House_Avaliacao/PixelHouse/Views/Produtos/Edit.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3MvUHJvZHV0b3MvRWRpdC5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
 [/home/karasu/Pixel_House_Avaliacao/PixelHouse/Views/Produtos/List.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3MvUHJvZHV0b3MvTGlzdC5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
