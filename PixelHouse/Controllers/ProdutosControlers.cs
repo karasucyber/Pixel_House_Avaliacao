@@ -9,18 +9,17 @@ namespace PixelHouse.Controllers
     {
         private readonly ApplicationDbContext _context;
 
-         public ProdutosController(ApplicationDbContext context)
-    {
-        _context = context;
-    }
+        public ProdutosController(ApplicationDbContext context)
+        {
+            _context = context;
+        }
 
-
-       /* Ação Index */
-    public async Task<IActionResult> Index()
-    {
-        var produtos = await _context.Produtos.ToListAsync();
-        return View(produtos);
-    }    
+        /* Ação Index */
+        public async Task<IActionResult> Index()
+        {
+            var produtos = await _context.Produtos.ToListAsync();
+            return View(produtos);
+        }
 
         /* Ação Create (GET) */
         public IActionResult Create()
@@ -112,6 +111,56 @@ namespace PixelHouse.Controllers
                 }
                 return RedirectToAction(nameof(Index));
             }
+            return View(produto);
+        }
+
+        /* Ação Delete (GET) */
+        public async Task<IActionResult> Delete(int? id)
+        {
+            if (id == null)
+            {
+                return NotFound();
+            }
+
+            var produto = await _context.Produtos
+                .FirstOrDefaultAsync(m => m.Id == id);
+            if (produto == null)
+            {
+                return NotFound();
+            }
+
+            return View(produto);
+        }
+
+        /* Ação Delete (POST) */
+        [HttpPost, ActionName("Delete")]
+        [ValidateAntiForgeryToken]
+        public async Task<IActionResult> DeleteConfirmed(int id)
+        {
+            var produto = await _context.Produtos.FindAsync(id);
+            if (produto != null)
+            {
+                _context.Produtos.Remove(produto);
+                await _context.SaveChangesAsync();
+            }
+            return RedirectToAction(nameof(Index));
+        }
+
+        /* Ação Details (GET) */
+        public async Task<IActionResult> Details(int? id)
+        {
+            if (id == null)
+            {
+                return NotFound();
+            }
+
+            var produto = await _context.Produtos
+                .FirstOrDefaultAsync(m => m.Id == id);
+            if (produto == null)
+            {
+                return NotFound();
+            }
+
             return View(produto);
         }
 
