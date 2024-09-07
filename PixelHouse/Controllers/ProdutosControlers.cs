@@ -9,16 +9,18 @@ namespace PixelHouse.Controllers
     {
         private readonly ApplicationDbContext _context;
 
-        public ProdutosController(ApplicationDbContext context)
-        {
-            _context = context;
-        }
+         public ProdutosController(ApplicationDbContext context)
+    {
+        _context = context;
+    }
 
-        /* Ação Index */
-        public async Task<IActionResult> Index()
-        {
-            return View(await _context.Produtos.ToListAsync());
-        }
+
+       /* Ação Index */
+    public async Task<IActionResult> Index()
+    {
+        var produtos = await _context.Produtos.ToListAsync();
+        return View(produtos);
+    }    
 
         /* Ação Create (GET) */
         public IActionResult Create()
