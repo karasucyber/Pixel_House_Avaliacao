@@ -1,0 +1,53 @@
+@model IEnumerable<PixelHouse.Models.Produto>
+
+<h1>Lista de Produtos</h1>
+
+<table class="table">
+    <thead>
+        <tr>
+            <th>ID</th>
+            <th>Nome</th>
+            <th>Descricao</th>
+            <th>Preco</th>
+            <th>QuantidadeEmEstoque</th>
+            <th>EstoqueMinimo</th>
+            <th>Unidade</th>
+            <th>ICMS</th>
+            <th>CFOP</th>
+            <th>DataEntrada</th>
+            <th>DataSaida</th>
+            <th>DataAlteracao</th>
+            <th>FornecedorPreferencial</th>     
+        </tr>
+    </thead>
+    <tbody>
+        @if (Model != null && Model.Any())
+        {
+            @foreach (var produto in Model)
+            {
+                <tr>
+                <td>@produto.Id</td>
+                <td>@produto.Nome</td>
+                <td>@produto.Descricao</td>
+                <td>@produto.Preco.ToString("C")</td>
+                <td>@produto.QuantidadeEmEstoque</td>
+                <td>@produto.EstoqueMinimo</td>
+                <td>@produto.Unidade</td>
+                <td>@produto.ICMS.ToString("P")</td>
+                <td>@produto.CFOP</td>
+                <td>@produto.DataEntrada.ToString("dd/MM/yyyy")</td>
+                <td>@produto.DataSaida.ToString("dd/MM/yyyy")</td>
+                <td>@produto.DataAlteracao.ToString("dd/MM/yyyy HH:mm:ss")</td>
+                <td>@produto.FornecedorPreferencial</td>
+                </tr>
+            }
+        }
+        else
+        {
+            <tr>
+                <td colspan="2">Nenhum produto encontrado.</td>
+            </tr>
+        }
+    </tbody>
+</table>
+

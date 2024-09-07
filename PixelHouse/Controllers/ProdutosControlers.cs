@@ -14,26 +14,29 @@ namespace PixelHouse.Controllers
             _context = context;
         }
 
-        /*ação index*/
+        /* Ação Index */
         public async Task<IActionResult> Index()
         {
             return View(await _context.Produtos.ToListAsync());
         }
 
-        /*ação create(Get)*/
-        public IActionResult create()
+        /* Ação Create (GET) */
+        public IActionResult Create()
         {
             return View();
         }
 
-        /*ação create(Post)*/
+        /* Ação Create (POST) */
         [HttpPost]
-        /*Anti CSRF*/
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create([Bind("Id,Nome,Descricao,Preco,QuantidadeEmEstoque,EstoqueMinimo,Unidade,ICMS,CFOP,DataEntrada,DataSaida,DataAlteracao,FornecedorPreferencial")] Produto produto)
+        public async Task<IActionResult> Create([Bind("Id,Nome,Descricao,Preco,QuantidadeEmEstoque,EstoqueMinimo,Unidade,ICMS,CFOP,FornecedorPreferencial")] Produto produto)
         {
             if (ModelState.IsValid)
             {
+                produto.DataEntrada = DateTime.Now; // Define a data de entrada como a data atual
+                produto.DataSaida = default(DateTime); // Data de saída ainda não está definida
+                produto.DataAlteracao = DateTime.Now; // Define a data de alteração como a data atual
+
                 _context.Add(produto);
                 await _context.SaveChangesAsync();
                 return RedirectToAction(nameof(Index));
@@ -41,7 +44,7 @@ namespace PixelHouse.Controllers
             return View(produto);
         }
 
-        /*Ação edit(Get)*/
+        /* Ação Edit (GET) */
         public async Task<IActionResult> Edit(int? id)
         {
             if (id == null)
@@ -57,6 +60,7 @@ namespace PixelHouse.Controllers
             return View(produto);
         }
 
+        /* Ação Edit (POST) */
         [HttpPost]
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> Edit(int id, [Bind("Id,Nome,Descricao,Preco,QuantidadeEmEstoque,EstoqueMinimo,Unidade,ICMS,CFOP,DataEntrada,DataSaida,DataAlteracao,FornecedorPreferencial")] Produto produto)
@@ -70,7 +74,27 @@ namespace PixelHouse.Controllers
             {
                 try
                 {
-                    _context.Update(produto);
+                    var produtoExistente = await _context.Produtos.FindAsync(id);
+                    if (produtoExistente == null)
+                    {
+                        return NotFound();
+                    }
+
+                    // Atualiza as propriedades do produto existente com as novas informações
+                    produtoExistente.Nome = produto.Nome;
+                    produtoExistente.Descricao = produto.Descricao;
+                    produtoExistente.Preco = produto.Preco;
+                    produtoExistente.QuantidadeEmEstoque = produto.QuantidadeEmEstoque;
+                    produtoExistente.EstoqueMinimo = produto.EstoqueMinimo;
+                    produtoExistente.Unidade = produto.Unidade;
+                    produtoExistente.ICMS = produto.ICMS;
+                    produtoExistente.CFOP = produto.CFOP;
+                    produtoExistente.FornecedorPreferencial = produto.FornecedorPreferencial;
+                    produtoExistente.DataSaida = produto.DataSaida; // Atualiza a data de saída se necessário
+                    produtoExistente.DataEntrada = produto.DataEntrada; // Atualiza a data de entrada se necessário
+                    produtoExistente.DataAlteracao = DateTime.Now; // Atualiza a data de alteração
+
+                    _context.Update(produtoExistente);
                     await _context.SaveChangesAsync();
                 }
                 catch (DbUpdateConcurrencyException)
@@ -89,10 +113,10 @@ namespace PixelHouse.Controllers
             return View(produto);
         }
 
+        /* Verifica se o produto existe */
         private bool ProdutoExists(int id)
         {
             return _context.Produtos.Any(k => k.Id == id);
         }
-
     }
 }
