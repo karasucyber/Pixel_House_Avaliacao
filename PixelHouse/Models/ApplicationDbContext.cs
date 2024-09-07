@@ -1,4 +1,5 @@
 using Microsoft.EntityFrameworkCore;
+using PixelHouse.Models;
 
 namespace PixelHouse.Data
 {

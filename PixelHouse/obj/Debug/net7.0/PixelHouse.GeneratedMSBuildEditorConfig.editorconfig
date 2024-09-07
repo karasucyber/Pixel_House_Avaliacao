@@ -16,6 +16,10 @@ build_property.GenerateRazorMetadataSourceChecksumAttributes =
 build_property.MSBuildProjectDirectory = /home/karasu/Pixel_House_Avaliacao/PixelHouse
 build_property._RazorSourceGeneratorDebug = 
 
+[/home/karasu/Pixel_House_Avaliacao/PixelHouse/Views/Home/graphics.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3MvSG9tZS9ncmFwaGljcy5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
 [/home/karasu/Pixel_House_Avaliacao/PixelHouse/Views/Home/Index.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3MvSG9tZS9JbmRleC5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
