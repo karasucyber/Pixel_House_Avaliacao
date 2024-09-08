@@ -30,14 +30,14 @@
                     <td>@produto.Id</td>
                     <td>@produto.Nome</td>
                     <td>@produto.Descricao</td>
-                    <td>@produto.Preco.ToString("C")</td>
+                    <td>R$@produto.Preco.ToString()</td>
                     <td>@produto.QuantidadeEmEstoque</td>
                     <td>@produto.EstoqueMinimo</td>
                     <td>@produto.Unidade</td>
-                    <td>@produto.ICMS.ToString("P")</td>
+                    <td>%@produto.ICMS.ToString()</td>
                     <td>@produto.CFOP</td>
-                    <td>@produto.DataEntrada.ToString("dd/MM/yyyy")</td>
-                    <td>@produto.DataSaida.ToString("dd/MM/yyyy")</td>
+                    <td>@produto.DataEntrada.ToString("dd/MM/yyyy HH:mm:ss")</td>
+                    <td>@produto.DataSaida.ToString("dd/MM/yyyy HH:mm:ss")</td>
                     <td>@produto.DataAlteracao.ToString("dd/MM/yyyy HH:mm:ss")</td>
                     <td>@produto.FornecedorPreferencial</td>
                     <td>

@@ -3,6 +3,8 @@ using System.Linq;
 using System.Threading;
 using System.Threading.Tasks;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.Extensions.DependencyInjection;
+using Microsoft.Extensions.Hosting;
 using PixelHouse.Data;
 using PixelHouse.Models;
 
@@ -20,78 +22,85 @@ namespace PixelHouse.Services
             _serviceProvider = serviceProvider;
         }
 
+        // Método executado ao iniciar o serviço
         public Task StartAsync(CancellationToken cancellationToken)
         {
             // Inicializa o timer para simular vendas a cada 30 segundos
-            _vendaTimer = new Timer(ExecuteVenda, null, TimeSpan.Zero, TimeSpan.FromSeconds(10));
+            _vendaTimer = new Timer(ExecuteVenda, null, TimeSpan.Zero, TimeSpan.FromSeconds(30));
 
             // Inicializa o timer para simular compras a cada 1 minuto
-            _compraTimer = new Timer(ExecuteCompra, null, TimeSpan.Zero, TimeSpan.FromSeconds(1));
+            _compraTimer = new Timer(ExecuteCompra, null, TimeSpan.Zero, TimeSpan.FromMinutes(1));
 
             return Task.CompletedTask;
         }
 
-        private async void ExecuteVenda(object? state)
+private async void ExecuteVenda(object? state)
+{
+    try
+    {
+        using (var scope = _serviceProvider.CreateScope())
         {
-            using (var scope = _serviceProvider.CreateScope())
+            var dbContext = scope.ServiceProvider.GetRequiredService<ApplicationDbContext>();
+            var produtos = await dbContext.Produtos.ToListAsync();
+            foreach (var produto in produtos)
             {
-                var dbContext = scope.ServiceProvider.GetRequiredService<ApplicationDbContext>();
-
-                // Simular vendas para todos os produtos
-                var produtos = await dbContext.Produtos.ToListAsync();
-                foreach (var produto in produtos)
+                var quantidade = _random.Next(1, 11);
+                var venda = new Venda
                 {
-                    if (produto.QuantidadeEmEstoque > produto.EstoqueMinimo)
-                    {
-                        // Gera um valor aleatório para a quantidade de venda entre 1 e 10
-                        var quantidade = _random.Next(1, 11);
+                    ProdutoId = produto.Id,
+                    Quantidade = quantidade,
+                    DataSaida = DateTime.Now
+                };
+                dbContext.Vendas.Add(venda);
+                produto.QuantidadeEmEstoque -= venda.Quantidade;
 
-                        var venda = new Venda
-                        {
-                            ProdutoId = produto.Id,
-                            Quantidade = quantidade,
-                            DataSaida = DateTime.Now
-                        };
+                if (produto.QuantidadeEmEstoque < 0)
+                    produto.QuantidadeEmEstoque = 0;
 
-                        dbContext.Vendas.Add(venda);
-                        produto.QuantidadeEmEstoque -= venda.Quantidade;
-                    }
-                }
-
-                await dbContext.SaveChangesAsync();
+                produto.DataSaida = venda.DataSaida; // Atualiza a DataSaida no produto
             }
+            await dbContext.SaveChangesAsync();
         }
+    }
+    catch (Exception ex)
+    {
+        Console.WriteLine($"Erro ao executar vendas: {ex.Message}");
+    }
+}
 
-        private async void ExecuteCompra(object? state)
+private async void ExecuteCompra(object? state)
+{
+    try
+    {
+        using (var scope = _serviceProvider.CreateScope())
         {
-            using (var scope = _serviceProvider.CreateScope())
+            var dbContext = scope.ServiceProvider.GetRequiredService<ApplicationDbContext>();
+            var produtos = await dbContext.Produtos.ToListAsync();
+            foreach (var produto in produtos)
             {
-                var dbContext = scope.ServiceProvider.GetRequiredService<ApplicationDbContext>();
-
-                // Simular compras para todos os produtos
-                var produtos = await dbContext.Produtos.ToListAsync();
-                foreach (var produto in produtos)
+                var quantidadeParaComprar = _random.Next(5, 21);
+                var compra = new Compra
                 {
-                    if (produto.QuantidadeEmEstoque < produto.EstoqueMinimo)
-                    {
-                        var quantidadeParaComprar = (produto.EstoqueMinimo - produto.QuantidadeEmEstoque) * 2;
-                        
-                        var compra = new Compra
-                        {
-                            ProdutoId = produto.Id,
-                            Quantidade = quantidadeParaComprar,
-                            DataEntrada = DateTime.Now
-                        };
-
-                        dbContext.Compras.Add(compra);
-                        produto.QuantidadeEmEstoque += compra.Quantidade;
-                    }
-                }
-
-                await dbContext.SaveChangesAsync();
+                    ProdutoId = produto.Id,
+                    Quantidade = quantidadeParaComprar,
+                    DataEntrada = DateTime.Now
+                };
+                dbContext.Compras.Add(compra);
+                produto.QuantidadeEmEstoque += compra.Quantidade;
+                produto.DataEntrada = compra.DataEntrada; // Atualiza a DataEntrada no produto
             }
+            await dbContext.SaveChangesAsync();
         }
+    }
+    catch (Exception ex)
+    {
+        Console.WriteLine($"Erro ao executar compras: {ex.Message}");
+    }
+}
 
+
+
+        // Método executado ao parar o serviço
         public Task StopAsync(CancellationToken cancellationToken)
         {
             _vendaTimer?.Change(Timeout.Infinite, 0);
@@ -99,6 +108,7 @@ namespace PixelHouse.Services
             return Task.CompletedTask;
         }
 
+        // Método para liberar recursos do timer
         public void Dispose()
         {
             _vendaTimer?.Dispose();
