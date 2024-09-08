@@ -140,7 +140,3 @@
 /home/karasu/Pixel_House_Avaliacao/PixelHouse/obj/Debug/net7.0/PixelHouse.pdb
 /home/karasu/Pixel_House_Avaliacao/PixelHouse/obj/Debug/net7.0/PixelHouse.genruntimeconfig.cache
 /home/karasu/Pixel_House_Avaliacao/PixelHouse/obj/Debug/net7.0/ref/PixelHouse.dll
-/home/karasu/Pixel_House_Avaliacao/PixelHouse/bin/Debug/net7.0/runtimes/linux-arm/native/libSkiaSharp.so
-/home/karasu/Pixel_House_Avaliacao/PixelHouse/bin/Debug/net7.0/runtimes/linux-arm64/native/libSkiaSharp.so
-/home/karasu/Pixel_House_Avaliacao/PixelHouse/bin/Debug/net7.0/runtimes/linux-musl-x64/native/libSkiaSharp.so
-/home/karasu/Pixel_House_Avaliacao/PixelHouse/bin/Debug/net7.0/runtimes/linux-x64/native/libSkiaSharp.so

@@ -17,6 +17,28 @@ namespace PixelHouse.Migrations
 #pragma warning disable 612, 618
             modelBuilder.HasAnnotation("ProductVersion", "7.0.0");
 
+            modelBuilder.Entity("PixelHouse.Models.Compra", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("INTEGER");
+
+                    b.Property<DateTime>("DataEntrada")
+                        .HasColumnType("TEXT");
+
+                    b.Property<int>("ProdutoId")
+                        .HasColumnType("INTEGER");
+
+                    b.Property<int>("Quantidade")
+                        .HasColumnType("INTEGER");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("ProdutoId");
+
+                    b.ToTable("Compras");
+                });
+
             modelBuilder.Entity("PixelHouse.Models.Produto", b =>
                 {
                     b.Property<int>("Id")
@@ -68,6 +90,50 @@ namespace PixelHouse.Migrations
                     b.HasKey("Id");
 
                     b.ToTable("Produtos");
+                });
+
+            modelBuilder.Entity("PixelHouse.Models.Venda", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("INTEGER");
+
+                    b.Property<DateTime>("DataSaida")
+                        .HasColumnType("TEXT");
+
+                    b.Property<int>("ProdutoId")
+                        .HasColumnType("INTEGER");
+
+                    b.Property<int>("Quantidade")
+                        .HasColumnType("INTEGER");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("ProdutoId");
+
+                    b.ToTable("Vendas");
+                });
+
+            modelBuilder.Entity("PixelHouse.Models.Compra", b =>
+                {
+                    b.HasOne("PixelHouse.Models.Produto", "Produto")
+                        .WithMany()
+                        .HasForeignKey("ProdutoId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("Produto");
+                });
+
+            modelBuilder.Entity("PixelHouse.Models.Venda", b =>
+                {
+                    b.HasOne("PixelHouse.Models.Produto", "Produto")
+                        .WithMany()
+                        .HasForeignKey("ProdutoId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("Produto");
                 });
 #pragma warning restore 612, 618
         }

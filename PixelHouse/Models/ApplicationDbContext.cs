@@ -13,5 +13,7 @@ namespace PixelHouse.Data
 
         // DbSet para a entidade Produto. Isso representa uma tabela no banco de dados.
         public DbSet<Produto> Produtos { get; set; }
+        public DbSet<Compra> Compras { get; set; }
+        public DbSet<Venda> Vendas { get; set; }
     }
 }

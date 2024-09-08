@@ -19,8 +19,6 @@
           "QuestPDF": "2024.7.3",
           "Serilog": "4.0.1",
           "Serilog.Sinks.Console": "6.0.0",
-          "SkiaSharp": "2.88.8",
-          "SkiaSharp.NativeAssets.Linux": "2.88.8",
           "System.Drawing.Common": "8.0.8",
           "xunit": "2.9.0",
           "xunit.runner.visualstudio": "2.8.2"
@@ -507,33 +505,6 @@
           "lib/net6.0/SkiaSharp.HarfBuzz.dll": {
             "assemblyVersion": "2.88.0.0",
             "fileVersion": "2.88.8.0"
-          }
-        }
-      },
-      "SkiaSharp.NativeAssets.Linux/2.88.8": {
-        "dependencies": {
-          "SkiaSharp": "2.88.8"
-        },
-        "runtimeTargets": {
-          "runtimes/linux-arm/native/libSkiaSharp.so": {
-            "rid": "linux-arm",
-            "assetType": "native",
-            "fileVersion": "0.0.0.0"
-          },
-          "runtimes/linux-arm64/native/libSkiaSharp.so": {
-            "rid": "linux-arm64",
-            "assetType": "native",
-            "fileVersion": "0.0.0.0"
-          },
-          "runtimes/linux-musl-x64/native/libSkiaSharp.so": {
-            "rid": "linux-musl-x64",
-            "assetType": "native",
-            "fileVersion": "0.0.0.0"
-          },
-          "runtimes/linux-x64/native/libSkiaSharp.so": {
-            "rid": "linux-x64",
-            "assetType": "native",
-            "fileVersion": "0.0.0.0"
           }
         }
       },
@@ -1173,13 +1144,6 @@
       "sha512": "sha512-ajSyJ2D17R0kZ4FwKwFrJTsYs3D3Y9iRBLhNecROR7dOxC6VTFaMPXJuwQB8KYpAqgmb2JAJFEgZ3i8MaaIw1g==",
       "path": "skiasharp.harfbuzz/2.88.8",
       "hashPath": "skiasharp.harfbuzz.2.88.8.nupkg.sha512"
-    },
-    "SkiaSharp.NativeAssets.Linux/2.88.8": {
-      "type": "package",
-      "serviceable": true,
-      "sha512": "sha512-0FO6YA7paNFBMJULvEyecPmCvL9/STvOAi5VOUw2srqJ7pNTbiiZkfl7sulAzcumbWgfzaVjRXYTgMj7SoUnWQ==",
-      "path": "skiasharp.nativeassets.linux/2.88.8",
-      "hashPath": "skiasharp.nativeassets.linux.2.88.8.nupkg.sha512"
     },
     "SkiaSharp.NativeAssets.macOS/2.88.8": {
       "type": "package",

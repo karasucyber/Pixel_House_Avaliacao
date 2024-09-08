@@ -1,7 +1,7 @@
 using Microsoft.EntityFrameworkCore;
 using PixelHouse.Data;
+using PixelHouse.Services;
 using QuestPDF;
-
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -14,6 +14,8 @@ builder.Services.AddDbContext<ApplicationDbContext>(options =>
     options.UseSqlite("Data Source=estoque.db"));
 
 builder.Services.AddControllersWithViews();
+
+builder.Services.AddHostedService<SimuladorService>();
 
 var app = builder.Build();
 
