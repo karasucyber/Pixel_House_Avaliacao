@@ -16,12 +16,24 @@ build_property.GenerateRazorMetadataSourceChecksumAttributes =
 build_property.MSBuildProjectDirectory = /home/karasu/Pixel_House_Avaliacao/PixelHouse
 build_property._RazorSourceGeneratorDebug = 
 
+[/home/karasu/Pixel_House_Avaliacao/PixelHouse/Views/Excel/Excel.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3MvRXhjZWwvRXhjZWwuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[/home/karasu/Pixel_House_Avaliacao/PixelHouse/Views/Graph/Graficos.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3MvR3JhcGgvR3JhZmljb3MuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
 [/home/karasu/Pixel_House_Avaliacao/PixelHouse/Views/Home/Create.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3MvSG9tZS9DcmVhdGUuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
 [/home/karasu/Pixel_House_Avaliacao/PixelHouse/Views/Home/index.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3MvSG9tZS9pbmRleC5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[/home/karasu/Pixel_House_Avaliacao/PixelHouse/Views/PDF/Relatorios.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3MvUERGL1JlbGF0b3Jpb3MuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
 [/home/karasu/Pixel_House_Avaliacao/PixelHouse/Views/Produtos/Create.cshtml]
