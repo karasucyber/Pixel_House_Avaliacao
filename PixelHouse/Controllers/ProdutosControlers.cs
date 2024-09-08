@@ -169,5 +169,16 @@ namespace PixelHouse.Controllers
         {
             return _context.Produtos.Any(k => k.Id == id);
         }
+
+
+        public IActionResult Relatorios()
+        {
+            return View();
+        }
+
+        public IActionResult Graficos()
+        {
+            return View();
+        }
     }
 }
