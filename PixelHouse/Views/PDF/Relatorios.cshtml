@@ -2,12 +2,49 @@
     ViewData["Title"] = "Relatórios";
 }
 
-<h1>Relatórios</h1>
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>@ViewData["Title"]</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+</head>
+<body>
+    <div class="container mt-4">
+        <h1>@ViewData["Title"]</h1>
 
-<p>Aqui você poderá visualizar os relatórios gerados pelo sistema.</p>
+        <p>Aqui você poderá visualizar os relatórios gerados pelo sistema.</p>
 
-<p>
-    <a href="@Url.Action("ProdutosEmEstoque", "Pdf")" class="btn btn-primary">
-        Gerar Relatório de Produtos em Estoque
-    </a>
-</p>
+        <div class="mb-3">
+            <a href="@Url.Action("ProdutosEmEstoque", "Pdf")" class="btn btn-primary">
+                Gerar Relatório de Produtos em Estoque
+            </a>
+        </div>
+
+        <div class="mb-3">
+            <a href="@Url.Action("ProdutosMaisVendidos", "Pdf")" class="btn btn-primary">
+                Gerar Relatório de Produtos Mais Vendidos
+            </a>
+        </div>
+
+        <div class="mb-3">
+            <a href="@Url.Action("ProdutosMaisComprados", "Pdf")" class="btn btn-primary">
+                Gerar Relatório de Produtos Mais Comprados
+            </a>
+        </div>
+
+        <div class="mb-3">
+            <a href="@Url.Action("ProdutosComEstoqueBaixo", "Pdf")" class="btn btn-primary">
+                Gerar Relatório de Produtos com Estoque Baixo
+            </a>
+        </div>
+
+        <div class="mb-3">
+            <a href="@Url.Action("ProdutosComPoucasVendas", "Pdf")" class="btn btn-primary">
+                Gerar Relatório de Produtos com Poucas Vendas
+            </a>
+        </div>
+    </div>
+</body>
+</html>

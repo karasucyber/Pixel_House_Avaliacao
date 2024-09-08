@@ -42,24 +42,33 @@ private async void ExecuteVenda(object? state)
         {
             var dbContext = scope.ServiceProvider.GetRequiredService<ApplicationDbContext>();
             var produtos = await dbContext.Produtos.ToListAsync();
-            foreach (var produto in produtos)
+            
+            if (produtos.Any())
             {
-                var quantidade = _random.Next(1, 11);
-                var venda = new Venda
+                // Escolhe um produto aleatório
+                var produto = produtos[_random.Next(produtos.Count)];
+                
+                // Simula uma venda se o estoque for maior que o mínimo
+                if (produto.QuantidadeEmEstoque > produto.EstoqueMinimo)
                 {
-                    ProdutoId = produto.Id,
-                    Quantidade = quantidade,
-                    DataSaida = DateTime.Now
-                };
-                dbContext.Vendas.Add(venda);
-                produto.QuantidadeEmEstoque -= venda.Quantidade;
+                    var quantidade = _random.Next(1, Math.Min(11, produto.QuantidadeEmEstoque + 1)); // Garante que a quantidade não exceda o estoque
+                    var venda = new Venda
+                    {
+                        ProdutoId = produto.Id,
+                        Quantidade = quantidade,
+                        DataSaida = DateTime.Now
+                    };
+                    dbContext.Vendas.Add(venda);
+                    produto.QuantidadeEmEstoque -= venda.Quantidade;
 
-                if (produto.QuantidadeEmEstoque < 0)
-                    produto.QuantidadeEmEstoque = 0;
+                    if (produto.QuantidadeEmEstoque < 0)
+                        produto.QuantidadeEmEstoque = 0;
 
-                produto.DataSaida = venda.DataSaida; // Atualiza a DataSaida no produto
+                    produto.DataSaida = venda.DataSaida; // Atualiza a DataSaida no produto
+                }
+                
+                await dbContext.SaveChangesAsync();
             }
-            await dbContext.SaveChangesAsync();
         }
     }
     catch (Exception ex)
