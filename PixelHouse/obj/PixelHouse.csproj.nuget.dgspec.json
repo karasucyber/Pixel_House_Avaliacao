@@ -62,6 +62,14 @@
               "target": "Package",
               "version": "[4.20.71, )"
             },
+            "OxyPlot.Core": {
+              "target": "Package",
+              "version": "[2.2.0, )"
+            },
+            "OxyPlot.SkiaSharp": {
+              "target": "Package",
+              "version": "[2.2.0, )"
+            },
             "QuestPDF": {
               "target": "Package",
               "version": "[2024.7.3, )"
@@ -73,6 +81,10 @@
             "Serilog.Sinks.Console": {
               "target": "Package",
               "version": "[6.0.0, )"
+            },
+            "System.Drawing.Common": {
+              "target": "Package",
+              "version": "[8.0.8, )"
             },
             "xunit": {
               "target": "Package",

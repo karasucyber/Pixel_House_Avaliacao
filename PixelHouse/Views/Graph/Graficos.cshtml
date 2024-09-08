@@ -1,25 +1,9 @@
 @{
-    ViewData["Title"] = "Produtos em Estoque";
+    ViewData["Title"] = "Gráficos";
 }
 
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>@ViewData["Title"]</title>
-    <link rel="stylesheet" href="~/css/site.css" />
-</head>
-<body>
-    <header>
-        <h1>@ViewData["Title"]</h1>
-    </header>
-    <main>
-        <p>Para gerar o relatório dos produtos em estoque, clique no botão abaixo:</p>
-        <a href="@Url.Action("ProdutosEmEstoque", "Excel")" class="btn btn-primary">Exportar para Excel</a>
-    </main>
-    <footer>
-        <p>&copy; 2024 PixelHouse</p>
-    </footer>
-</body>
-</html>
+<h2>Gráficos</h2>
+
+<div>
+    <img src="data:image/png;base64,@ViewData["ChartImage"]" alt="Gráfico" />
+</div>

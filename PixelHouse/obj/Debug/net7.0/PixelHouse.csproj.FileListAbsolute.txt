@@ -33,6 +33,7 @@
 /home/karasu/Pixel_House_Avaliacao/PixelHouse/bin/Debug/net7.0/EPPlus.dll
 /home/karasu/Pixel_House_Avaliacao/PixelHouse/bin/Debug/net7.0/EPPlus.Interfaces.dll
 /home/karasu/Pixel_House_Avaliacao/PixelHouse/bin/Debug/net7.0/EPPlus.System.Drawing.dll
+/home/karasu/Pixel_House_Avaliacao/PixelHouse/bin/Debug/net7.0/HarfBuzzSharp.dll
 /home/karasu/Pixel_House_Avaliacao/PixelHouse/bin/Debug/net7.0/Humanizer.dll
 /home/karasu/Pixel_House_Avaliacao/PixelHouse/bin/Debug/net7.0/Microsoft.Data.Sqlite.dll
 /home/karasu/Pixel_House_Avaliacao/PixelHouse/bin/Debug/net7.0/Microsoft.EntityFrameworkCore.dll
@@ -53,9 +54,13 @@
 /home/karasu/Pixel_House_Avaliacao/PixelHouse/bin/Debug/net7.0/Microsoft.Win32.SystemEvents.dll
 /home/karasu/Pixel_House_Avaliacao/PixelHouse/bin/Debug/net7.0/Mono.TextTemplating.dll
 /home/karasu/Pixel_House_Avaliacao/PixelHouse/bin/Debug/net7.0/Moq.dll
+/home/karasu/Pixel_House_Avaliacao/PixelHouse/bin/Debug/net7.0/OxyPlot.dll
+/home/karasu/Pixel_House_Avaliacao/PixelHouse/bin/Debug/net7.0/OxyPlot.SkiaSharp.dll
 /home/karasu/Pixel_House_Avaliacao/PixelHouse/bin/Debug/net7.0/QuestPDF.dll
 /home/karasu/Pixel_House_Avaliacao/PixelHouse/bin/Debug/net7.0/Serilog.dll
 /home/karasu/Pixel_House_Avaliacao/PixelHouse/bin/Debug/net7.0/Serilog.Sinks.Console.dll
+/home/karasu/Pixel_House_Avaliacao/PixelHouse/bin/Debug/net7.0/SkiaSharp.dll
+/home/karasu/Pixel_House_Avaliacao/PixelHouse/bin/Debug/net7.0/SkiaSharp.HarfBuzz.dll
 /home/karasu/Pixel_House_Avaliacao/PixelHouse/bin/Debug/net7.0/SQLitePCLRaw.batteries_v2.dll
 /home/karasu/Pixel_House_Avaliacao/PixelHouse/bin/Debug/net7.0/SQLitePCLRaw.core.dll
 /home/karasu/Pixel_House_Avaliacao/PixelHouse/bin/Debug/net7.0/SQLitePCLRaw.provider.e_sqlite3.dll
@@ -70,6 +75,10 @@
 /home/karasu/Pixel_House_Avaliacao/PixelHouse/bin/Debug/net7.0/xunit.assert.dll
 /home/karasu/Pixel_House_Avaliacao/PixelHouse/bin/Debug/net7.0/xunit.core.dll
 /home/karasu/Pixel_House_Avaliacao/PixelHouse/bin/Debug/net7.0/xunit.execution.dotnet.dll
+/home/karasu/Pixel_House_Avaliacao/PixelHouse/bin/Debug/net7.0/runtimes/osx/native/libHarfBuzzSharp.dylib
+/home/karasu/Pixel_House_Avaliacao/PixelHouse/bin/Debug/net7.0/runtimes/win-arm64/native/libHarfBuzzSharp.dll
+/home/karasu/Pixel_House_Avaliacao/PixelHouse/bin/Debug/net7.0/runtimes/win-x64/native/libHarfBuzzSharp.dll
+/home/karasu/Pixel_House_Avaliacao/PixelHouse/bin/Debug/net7.0/runtimes/win-x86/native/libHarfBuzzSharp.dll
 /home/karasu/Pixel_House_Avaliacao/PixelHouse/bin/Debug/net7.0/runtimes/win/lib/net7.0/Microsoft.Win32.SystemEvents.dll
 /home/karasu/Pixel_House_Avaliacao/PixelHouse/bin/Debug/net7.0/runtimes/linux-arm64/native/libQuestPdfSkia.so
 /home/karasu/Pixel_House_Avaliacao/PixelHouse/bin/Debug/net7.0/runtimes/linux-musl-x64/native/libQuestPdfSkia.so
@@ -78,6 +87,10 @@
 /home/karasu/Pixel_House_Avaliacao/PixelHouse/bin/Debug/net7.0/runtimes/osx-x64/native/libQuestPdfSkia.dylib
 /home/karasu/Pixel_House_Avaliacao/PixelHouse/bin/Debug/net7.0/runtimes/win-x64/native/QuestPdfSkia.dll
 /home/karasu/Pixel_House_Avaliacao/PixelHouse/bin/Debug/net7.0/runtimes/win-x86/native/QuestPdfSkia.dll
+/home/karasu/Pixel_House_Avaliacao/PixelHouse/bin/Debug/net7.0/runtimes/osx/native/libSkiaSharp.dylib
+/home/karasu/Pixel_House_Avaliacao/PixelHouse/bin/Debug/net7.0/runtimes/win-arm64/native/libSkiaSharp.dll
+/home/karasu/Pixel_House_Avaliacao/PixelHouse/bin/Debug/net7.0/runtimes/win-x64/native/libSkiaSharp.dll
+/home/karasu/Pixel_House_Avaliacao/PixelHouse/bin/Debug/net7.0/runtimes/win-x86/native/libSkiaSharp.dll
 /home/karasu/Pixel_House_Avaliacao/PixelHouse/bin/Debug/net7.0/runtimes/alpine-arm/native/libe_sqlite3.so
 /home/karasu/Pixel_House_Avaliacao/PixelHouse/bin/Debug/net7.0/runtimes/alpine-arm64/native/libe_sqlite3.so
 /home/karasu/Pixel_House_Avaliacao/PixelHouse/bin/Debug/net7.0/runtimes/alpine-x64/native/libe_sqlite3.so
@@ -100,7 +113,6 @@
 /home/karasu/Pixel_House_Avaliacao/PixelHouse/bin/Debug/net7.0/runtimes/win-arm64/native/e_sqlite3.dll
 /home/karasu/Pixel_House_Avaliacao/PixelHouse/bin/Debug/net7.0/runtimes/win-x64/native/e_sqlite3.dll
 /home/karasu/Pixel_House_Avaliacao/PixelHouse/bin/Debug/net7.0/runtimes/win-x86/native/e_sqlite3.dll
-/home/karasu/Pixel_House_Avaliacao/PixelHouse/bin/Debug/net7.0/runtimes/win/lib/net7.0/System.Drawing.Common.dll
 /home/karasu/Pixel_House_Avaliacao/PixelHouse/bin/Debug/net7.0/runtimes/win/lib/net7.0/System.Security.Cryptography.Pkcs.dll
 /home/karasu/Pixel_House_Avaliacao/PixelHouse/bin/Debug/net7.0/runtimes/win/lib/net7.0/System.Text.Encoding.CodePages.dll
 /home/karasu/Pixel_House_Avaliacao/PixelHouse/bin/Debug/net7.0/runtimes/browser/lib/net7.0/System.Text.Encodings.Web.dll
@@ -128,3 +140,7 @@
 /home/karasu/Pixel_House_Avaliacao/PixelHouse/obj/Debug/net7.0/PixelHouse.pdb
 /home/karasu/Pixel_House_Avaliacao/PixelHouse/obj/Debug/net7.0/PixelHouse.genruntimeconfig.cache
 /home/karasu/Pixel_House_Avaliacao/PixelHouse/obj/Debug/net7.0/ref/PixelHouse.dll
+/home/karasu/Pixel_House_Avaliacao/PixelHouse/bin/Debug/net7.0/runtimes/linux-arm/native/libSkiaSharp.so
+/home/karasu/Pixel_House_Avaliacao/PixelHouse/bin/Debug/net7.0/runtimes/linux-arm64/native/libSkiaSharp.so
+/home/karasu/Pixel_House_Avaliacao/PixelHouse/bin/Debug/net7.0/runtimes/linux-musl-x64/native/libSkiaSharp.so
+/home/karasu/Pixel_House_Avaliacao/PixelHouse/bin/Debug/net7.0/runtimes/linux-x64/native/libSkiaSharp.so
