@@ -1,25 +1,50 @@
 @{
-    ViewData["Title"] = "Produtos em Estoque";
+    ViewData["Title"] = "Relatórios Excel";
 }
 
 <!DOCTYPE html>
-<html lang="en">
+<html lang="pt-BR">
 <head>
-    <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>@ViewData["Title"]</title>
-    <link rel="stylesheet" href="~/css/site.css" />
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
 </head>
 <body>
-    <header>
+    <div class="container mt-4">
         <h1>@ViewData["Title"]</h1>
-    </header>
-    <main>
-        <p>Para gerar o relatório dos produtos em estoque, clique no botão abaixo:</p>
-        <a href="@Url.Action("ProdutosEmEstoque", "Excel")" class="btn btn-primary">Exportar para Excel</a>
-    </main>
-    <footer>
-        <p>&copy; 2024 PixelHouse</p>
-    </footer>
+
+        <p>Aqui você poderá visualizar os relatórios gerados em Excel.</p>
+
+        <div class="mb-3">
+            <a href="@Url.Action("ProdutosEmEstoque", "Excel")" class="btn btn-primary">
+                Gerar Relatório de Produtos em Estoque
+            </a>
+        </div>
+
+        <div class="mb-3">
+            <a href="@Url.Action("ProdutosMaisVendidos", "Excel")" class="btn btn-primary">
+                Gerar Relatório de Produtos Mais Vendidos
+            </a>
+        </div>
+
+        <div class="mb-3">
+            <a href="@Url.Action("ProdutosMaisComprados", "Excel")" class="btn btn-primary">
+                Gerar Relatório de Produtos Mais Comprados
+            </a>
+        </div>
+
+        <div class="mb-3">
+            <a href="@Url.Action("ProdutosComEstoqueBaixo", "Excel")" class="btn btn-primary">
+                Gerar Relatório de Produtos com Estoque Baixo
+            </a>
+        </div>
+
+        <div class="mb-3">
+            <a href="@Url.Action("ProdutosComPoucasVendas", "Excel")" class="btn btn-primary">
+                Gerar Relatório de Produtos com Poucas Vendas
+            </a>
+        </div>
+    </div>
 </body>
 </html>
