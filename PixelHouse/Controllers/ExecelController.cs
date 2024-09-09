@@ -1,6 +1,8 @@
 using Microsoft.AspNetCore.Mvc;
 using OfficeOpenXml;
+using OfficeOpenXml.Style;
 using PixelHouse.Data;
+using System;
 using System.IO;
 using System.Linq;
 
@@ -22,30 +24,51 @@ public class ExcelController : Controller
             var worksheet = package.Workbook.Worksheets.Add("Produtos em Estoque");
 
             // Cabeçalhos
-            worksheet.Cells[1, 1].Value = "ID";
-            worksheet.Cells[1, 2].Value = "Nome";
-            worksheet.Cells[1, 3].Value = "Descrição";
-            worksheet.Cells[1, 4].Value = "Quantidade em Estoque";
-
-            // Dados
-            for (int i = 0; i < produtos.Count; i++)
-            {
-                var produto = produtos[i];
-                worksheet.Cells[i + 2, 1].Value = produto.Id;
-                worksheet.Cells[i + 2, 2].Value = produto.Nome;
-                worksheet.Cells[i + 2, 3].Value = produto.Descricao;
-                worksheet.Cells[i + 2, 4].Value = produto.QuantidadeEmEstoque;
-            }
-
-            // Ajustar largura das colunas
-            worksheet.Cells[worksheet.Dimension.Address].AutoFitColumns();
-
-            var stream = new MemoryStream();
-            package.SaveAs(stream);
-            stream.Position = 0;
-
-            return File(stream.ToArray(), "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet", "ProdutosEmEstoque.xlsx");
+               var headers = new[]
+        {
+            "ID", "Nome", "Descrição", "Preço", "Quantidade em Estoque", "Estoque Mínimo",
+            "Unidade", "ICMS", "CFOP" // Removidos DataDeEntrada, DataDeSaida, DataDeAlteracao, Fornecedor Preferencial
+        };
+        for (int i = 0; i < headers.Length; i++)
+        {
+            var cell = worksheet.Cells[1, i + 1];
+            cell.Value = headers[i];
+            cell.Style.Font.Bold = true;
+            cell.Style.Border.Bottom.Style = ExcelBorderStyle.Thin;
+            cell.Style.Fill.PatternType = ExcelFillStyle.Solid;
+            cell.Style.Fill.BackgroundColor.SetColor(System.Drawing.Color.LightGray);
+            cell.Style.HorizontalAlignment = ExcelHorizontalAlignment.Center;
+            cell.Style.VerticalAlignment = ExcelVerticalAlignment.Center;
+            cell.Style.Border.Left.Style = ExcelBorderStyle.Thin;
+            cell.Style.Border.Right.Style = ExcelBorderStyle.Thin;
         }
+
+        // Dados
+        for (int i = 0; i < produtos.Count; i++)
+        {
+            var produto = produtos[i];
+            var row = i + 2;
+            worksheet.Cells[row, 1].Value = produto.Id;
+            worksheet.Cells[row, 2].Value = produto.Nome;
+            worksheet.Cells[row, 3].Value = produto.Descricao;
+            worksheet.Cells[row, 4].Value = produto.Preco;
+            worksheet.Cells[row, 5].Value = produto.QuantidadeEmEstoque;
+            worksheet.Cells[row, 6].Value = produto.EstoqueMinimo;
+            worksheet.Cells[row, 7].Value = produto.Unidade;
+            worksheet.Cells[row, 8].Value = produto.ICMS;
+            worksheet.Cells[row, 9].Value = produto.CFOP;
+            // Removido DataDeEntrada, DataDeSaida, DataDeAlteracao, Fornecedor Preferencial
+        }
+
+        // Ajustar largura das colunas
+        worksheet.Cells[worksheet.Dimension.Address].AutoFitColumns();
+
+        var stream = new MemoryStream();
+        package.SaveAs(stream);
+        stream.Position = 0;
+
+        return File(stream.ToArray(), "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet", "ProdutosEmEstoque.xlsx");
+    }
     }
 
     public IActionResult ProdutosMaisVendidos()
@@ -67,6 +90,7 @@ public class ExcelController : Controller
                 p.Id,
                 p.Nome,
                 p.Descricao,
+                p.Preco,
                 TotalVendido = v.TotalVendido
             })
             .ToList();
@@ -76,19 +100,34 @@ public class ExcelController : Controller
             var worksheet = package.Workbook.Worksheets.Add("Produtos Mais Vendidos");
 
             // Cabeçalhos
-            worksheet.Cells[1, 1].Value = "ID";
-            worksheet.Cells[1, 2].Value = "Nome";
-            worksheet.Cells[1, 3].Value = "Descrição";
-            worksheet.Cells[1, 4].Value = "Total Vendido";
+            var headers = new[]
+            {
+                "ID", "Nome", "Descrição", "Preço", "Total Vendido"
+            };
+            for (int i = 0; i < headers.Length; i++)
+            {
+                var cell = worksheet.Cells[1, i + 1];
+                cell.Value = headers[i];
+                cell.Style.Font.Bold = true;
+                cell.Style.Border.Bottom.Style = ExcelBorderStyle.Thin;
+                cell.Style.Fill.PatternType = ExcelFillStyle.Solid;
+                cell.Style.Fill.BackgroundColor.SetColor(System.Drawing.Color.LightGray);
+                cell.Style.HorizontalAlignment = ExcelHorizontalAlignment.Center;
+                cell.Style.VerticalAlignment = ExcelVerticalAlignment.Center;
+                cell.Style.Border.Left.Style = ExcelBorderStyle.Thin;
+                cell.Style.Border.Right.Style = ExcelBorderStyle.Thin;
+            }
 
             // Dados
             for (int i = 0; i < produtosMaisVendidos.Count; i++)
             {
                 var produto = produtosMaisVendidos[i];
-                worksheet.Cells[i + 2, 1].Value = produto.Id;
-                worksheet.Cells[i + 2, 2].Value = produto.Nome;
-                worksheet.Cells[i + 2, 3].Value = produto.Descricao;
-                worksheet.Cells[i + 2, 4].Value = produto.TotalVendido;
+                var row = i + 2;
+                worksheet.Cells[row, 1].Value = produto.Id;
+                worksheet.Cells[row, 2].Value = produto.Nome;
+                worksheet.Cells[row, 3].Value = produto.Descricao;
+                worksheet.Cells[row, 4].Value = produto.Preco;
+                worksheet.Cells[row, 5].Value = produto.TotalVendido;
             }
 
             // Ajustar largura das colunas
@@ -121,6 +160,7 @@ public class ExcelController : Controller
                 p.Id,
                 p.Nome,
                 p.Descricao,
+                p.Preco,
                 TotalComprado = c.TotalComprado
             })
             .ToList();
@@ -130,19 +170,34 @@ public class ExcelController : Controller
             var worksheet = package.Workbook.Worksheets.Add("Produtos Mais Comprados");
 
             // Cabeçalhos
-            worksheet.Cells[1, 1].Value = "ID";
-            worksheet.Cells[1, 2].Value = "Nome";
-            worksheet.Cells[1, 3].Value = "Descrição";
-            worksheet.Cells[1, 4].Value = "Total Comprado";
+            var headers = new[]
+            {
+                "ID", "Nome", "Descrição", "Preço", "Total Comprado"
+            };
+            for (int i = 0; i < headers.Length; i++)
+            {
+                var cell = worksheet.Cells[1, i + 1];
+                cell.Value = headers[i];
+                cell.Style.Font.Bold = true;
+                cell.Style.Border.Bottom.Style = ExcelBorderStyle.Thin;
+                cell.Style.Fill.PatternType = ExcelFillStyle.Solid;
+                cell.Style.Fill.BackgroundColor.SetColor(System.Drawing.Color.LightGray);
+                cell.Style.HorizontalAlignment = ExcelHorizontalAlignment.Center;
+                cell.Style.VerticalAlignment = ExcelVerticalAlignment.Center;
+                cell.Style.Border.Left.Style = ExcelBorderStyle.Thin;
+                cell.Style.Border.Right.Style = ExcelBorderStyle.Thin;
+            }
 
             // Dados
             for (int i = 0; i < produtosMaisComprados.Count; i++)
             {
                 var produto = produtosMaisComprados[i];
-                worksheet.Cells[i + 2, 1].Value = produto.Id;
-                worksheet.Cells[i + 2, 2].Value = produto.Nome;
-                worksheet.Cells[i + 2, 3].Value = produto.Descricao;
-                worksheet.Cells[i + 2, 4].Value = produto.TotalComprado;
+                var row = i + 2;
+                worksheet.Cells[row, 1].Value = produto.Id;
+                worksheet.Cells[row, 2].Value = produto.Nome;
+                worksheet.Cells[row, 3].Value = produto.Descricao;
+                worksheet.Cells[row, 4].Value = produto.Preco;
+                worksheet.Cells[row, 5].Value = produto.TotalComprado;
             }
 
             // Ajustar largura das colunas
@@ -167,21 +222,35 @@ public class ExcelController : Controller
             var worksheet = package.Workbook.Worksheets.Add("Produtos com Estoque Baixo");
 
             // Cabeçalhos
-            worksheet.Cells[1, 1].Value = "ID";
-            worksheet.Cells[1, 2].Value = "Nome";
-            worksheet.Cells[1, 3].Value = "Descrição";
-            worksheet.Cells[1, 4].Value = "Quantidade em Estoque";
-            worksheet.Cells[1, 5].Value = "Estoque Mínimo";
+            var headers = new[]
+            {
+                "ID", "Nome", "Descrição", "Preço", "Quantidade em Estoque", "Estoque Mínimo"
+            };
+            for (int i = 0; i < headers.Length; i++)
+            {
+                var cell = worksheet.Cells[1, i + 1];
+                cell.Value = headers[i];
+                cell.Style.Font.Bold = true;
+                cell.Style.Border.Bottom.Style = ExcelBorderStyle.Thin;
+                cell.Style.Fill.PatternType = ExcelFillStyle.Solid;
+                cell.Style.Fill.BackgroundColor.SetColor(System.Drawing.Color.LightGray);
+                cell.Style.HorizontalAlignment = ExcelHorizontalAlignment.Center;
+                cell.Style.VerticalAlignment = ExcelVerticalAlignment.Center;
+                cell.Style.Border.Left.Style = ExcelBorderStyle.Thin;
+                cell.Style.Border.Right.Style = ExcelBorderStyle.Thin;
+            }
 
             // Dados
             for (int i = 0; i < produtos.Count; i++)
             {
                 var produto = produtos[i];
-                worksheet.Cells[i + 2, 1].Value = produto.Id;
-                worksheet.Cells[i + 2, 2].Value = produto.Nome;
-                worksheet.Cells[i + 2, 3].Value = produto.Descricao;
-                worksheet.Cells[i + 2, 4].Value = produto.QuantidadeEmEstoque;
-                worksheet.Cells[i + 2, 5].Value = produto.EstoqueMinimo;
+                var row = i + 2;
+                worksheet.Cells[row, 1].Value = produto.Id;
+                worksheet.Cells[row, 2].Value = produto.Nome;
+                worksheet.Cells[row, 3].Value = produto.Descricao;
+                worksheet.Cells[row, 4].Value = produto.Preco;
+                worksheet.Cells[row, 5].Value = produto.QuantidadeEmEstoque;
+                worksheet.Cells[row, 6].Value = produto.EstoqueMinimo;
             }
 
             // Ajustar largura das colunas
@@ -192,71 +261,13 @@ public class ExcelController : Controller
             stream.Position = 0;
 
             return File(stream.ToArray(), "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet", "ProdutosComEstoqueBaixo.xlsx");
+            
         }
+        
     }
 
-    public IActionResult ProdutosComPoucasVendas()
-    {
-        var vendas = _context.Vendas
-            .GroupBy(v => v.ProdutoId)
-            .Select(g => new
-            {
-                ProdutoId = g.Key,
-                TotalVendido = g.Sum(v => v.Quantidade)
-            })
-            .OrderBy(p => p.TotalVendido)
-            .ToList();
-
-        var produtos = _context.Produtos.ToList();
-        var produtosComPoucasVendas = vendas
-            .Join(produtos, v => v.ProdutoId, p => p.Id, (v, p) => new
-            {
-                p.Id,
-                p.Nome,
-                p.Descricao,
-                TotalVendido = v.TotalVendido
-            })
-            .Where(p => p.TotalVendido > 0)
-            .ToList();
-
-        using (var package = new ExcelPackage())
-        {
-            var worksheet = package.Workbook.Worksheets.Add("Produtos com Poucas Vendas");
-
-            // Cabeçalhos
-            worksheet.Cells[1, 1].Value = "ID";
-            worksheet.Cells[1, 2].Value = "Nome";
-            worksheet.Cells[1, 3].Value = "Descrição";
-            worksheet.Cells[1, 4].Value = "Total Vendido";
-
-            // Dados
-            for (int i = 0; i < produtosComPoucasVendas.Count; i++)
-            {
-                var produto = produtosComPoucasVendas[i];
-                worksheet.Cells[i + 2, 1].Value = produto.Id;
-                worksheet.Cells[i + 2, 2].Value = produto.Nome;
-                worksheet.Cells[i + 2, 3].Value = produto.Descricao;
-                worksheet.Cells[i + 2, 4].Value = produto.TotalVendido;
-            }
-
-            // Ajustar largura das colunas
-            worksheet.Cells[worksheet.Dimension.Address].AutoFitColumns();
-
-            var stream = new MemoryStream();
-            package.SaveAs(stream);
-            stream.Position = 0;
-
-            return File(stream.ToArray(), "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet", "ProdutosComPoucasVendas.xlsx");
-        }
-    }
-
-        public IActionResult Excel()
+         public IActionResult Excel()
     {
         return View();
     }
 }
-
-
-
-
-          

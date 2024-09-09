@@ -39,7 +39,6 @@ public class PdfController : Controller
                             {
                                 columns.ConstantColumn(50); // ID
                                 columns.RelativeColumn(200); // Nome
-                                columns.RelativeColumn(200); // Descrição
                                 columns.ConstantColumn(100); // Quantidade
                             });
 
@@ -47,7 +46,6 @@ public class PdfController : Controller
                             {
                                 header.Cell().Text("ID").Bold();
                                 header.Cell().Text("Nome").Bold();
-                                header.Cell().Text("Descrição").Bold();
                                 header.Cell().Text("Quantidade em Estoque").Bold();
                             });
 
@@ -111,7 +109,6 @@ public class PdfController : Controller
                             {
                                 columns.ConstantColumn(50); // ID
                                 columns.RelativeColumn(200); // Nome
-                                columns.RelativeColumn(200); // Descrição
                                 columns.ConstantColumn(100); // Total Vendido
                             });
 
@@ -119,7 +116,6 @@ public class PdfController : Controller
                             {
                                 header.Cell().Text("ID").Bold();
                                 header.Cell().Text("Nome").Bold();
-                                header.Cell().Text("Descrição").Bold();
                                 header.Cell().Text("Total Vendido").Bold();
                             });
 
@@ -183,7 +179,6 @@ public class PdfController : Controller
                             {
                                 columns.ConstantColumn(50); // ID
                                 columns.RelativeColumn(200); // Nome
-                                columns.RelativeColumn(200); // Descrição
                                 columns.ConstantColumn(100); // Total Comprado
                             });
 
@@ -191,7 +186,6 @@ public class PdfController : Controller
                             {
                                 header.Cell().Text("ID").Bold();
                                 header.Cell().Text("Nome").Bold();
-                                header.Cell().Text("Descrição").Bold();
                                 header.Cell().Text("Total Comprado").Bold();
                             });
 
@@ -238,7 +232,6 @@ public class PdfController : Controller
                             {
                                 columns.ConstantColumn(50); // ID
                                 columns.RelativeColumn(200); // Nome
-                                columns.RelativeColumn(200); // Descrição
                                 columns.ConstantColumn(100); // Quantidade em Estoque
                                 columns.ConstantColumn(100); // Estoque Mínimo
                             });
@@ -247,7 +240,6 @@ public class PdfController : Controller
                             {
                                 header.Cell().Text("ID").Bold();
                                 header.Cell().Text("Nome").Bold();
-                                header.Cell().Text("Descrição").Bold();
                                 header.Cell().Text("Quantidade em Estoque").Bold();
                                 header.Cell().Text("Estoque Mínimo").Bold();
                             });
@@ -315,7 +307,6 @@ public class PdfController : Controller
                             {
                                 columns.ConstantColumn(50); // ID
                                 columns.RelativeColumn(200); // Nome
-                                columns.RelativeColumn(200); // Descrição
                                 columns.ConstantColumn(100); // Total Vendido
                             });
 
@@ -323,7 +314,6 @@ public class PdfController : Controller
                             {
                                 header.Cell().Text("ID").Bold();
                                 header.Cell().Text("Nome").Bold();
-                                header.Cell().Text("Descrição").Bold();
                                 header.Cell().Text("Total Vendido").Bold();
                             });
 
