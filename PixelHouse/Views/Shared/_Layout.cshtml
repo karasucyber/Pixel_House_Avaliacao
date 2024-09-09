@@ -21,16 +21,20 @@
                 <div class="navbar-collapse collapse d-sm-inline-flex justify-content-between">
                     <ul class="navbar-nav flex-grow-1">
                         <li class="nav-item">
-                            <a class="nav-link text-dark" asp-area="" asp-controller="Home"
-                                asp-action="Create">Produtos</a>
+                            <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="Create">Produtos</a>
                         </li>
+                         <li class="nav-item">
+                            <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="Index">Vendas & Compras</a>
+                        </li>
+                        
                         <li class="nav-item">
                             <a class="nav-link" asp-controller="PDF" asp-action="Relatorios">PDFS</a>
                         </li>
                         <li class="nav-item">
                             <a class="nav-link" asp-controller="Excel" asp-action="Excel">Excel</a>
-                  
-                        <a class="nav-link" asp-controller="Produtos" asp-action="Index">Lista de Produtos</a>
+                        </li>
+                           <li class="nav-item">
+                            <a class="nav-link" asp-controller="Produtos" asp-action="Index">Lista de Produtos</a>
                         </li>
                     </ul>
                 </div>
