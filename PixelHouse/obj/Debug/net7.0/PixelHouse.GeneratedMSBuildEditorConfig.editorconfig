@@ -9,69 +9,69 @@ build_property.EnforceExtendedAnalyzerRules =
 build_property._SupportedPlatformList = Linux,macOS,Windows
 build_property.RootNamespace = PixelHouse
 build_property.RootNamespace = PixelHouse
-build_property.ProjectDir = /home/karasu/Pixel_House_Avaliacao/PixelHouse/
+build_property.ProjectDir = /home/karasu/Desktop/Pixel_House_Avaliacao/PixelHouse/
 build_property.RazorLangVersion = 7.0
 build_property.SupportLocalizedComponentNames = 
 build_property.GenerateRazorMetadataSourceChecksumAttributes = 
-build_property.MSBuildProjectDirectory = /home/karasu/Pixel_House_Avaliacao/PixelHouse
+build_property.MSBuildProjectDirectory = /home/karasu/Desktop/Pixel_House_Avaliacao/PixelHouse
 build_property._RazorSourceGeneratorDebug = 
 
-[/home/karasu/Pixel_House_Avaliacao/PixelHouse/Views/Excel/Excel.cshtml]
+[/home/karasu/Desktop/Pixel_House_Avaliacao/PixelHouse/Views/Excel/Excel.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3MvRXhjZWwvRXhjZWwuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
-[/home/karasu/Pixel_House_Avaliacao/PixelHouse/Views/Home/Create.cshtml]
+[/home/karasu/Desktop/Pixel_House_Avaliacao/PixelHouse/Views/Home/Create.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3MvSG9tZS9DcmVhdGUuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
-[/home/karasu/Pixel_House_Avaliacao/PixelHouse/Views/Home/index.cshtml]
+[/home/karasu/Desktop/Pixel_House_Avaliacao/PixelHouse/Views/Home/index.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3MvSG9tZS9pbmRleC5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[/home/karasu/Pixel_House_Avaliacao/PixelHouse/Views/PDF/Relatorios.cshtml]
+[/home/karasu/Desktop/Pixel_House_Avaliacao/PixelHouse/Views/PDF/Relatorios.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3MvUERGL1JlbGF0b3Jpb3MuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
-[/home/karasu/Pixel_House_Avaliacao/PixelHouse/Views/Produtos/Create.cshtml]
+[/home/karasu/Desktop/Pixel_House_Avaliacao/PixelHouse/Views/Produtos/Create.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3MvUHJvZHV0b3MvQ3JlYXRlLmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[/home/karasu/Pixel_House_Avaliacao/PixelHouse/Views/Produtos/Delete.cshtml]
+[/home/karasu/Desktop/Pixel_House_Avaliacao/PixelHouse/Views/Produtos/Delete.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3MvUHJvZHV0b3MvRGVsZXRlLmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[/home/karasu/Pixel_House_Avaliacao/PixelHouse/Views/Produtos/Edit.cshtml]
+[/home/karasu/Desktop/Pixel_House_Avaliacao/PixelHouse/Views/Produtos/Edit.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3MvUHJvZHV0b3MvRWRpdC5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[/home/karasu/Pixel_House_Avaliacao/PixelHouse/Views/Produtos/Graficos.cshtml]
+[/home/karasu/Desktop/Pixel_House_Avaliacao/PixelHouse/Views/Produtos/Graficos.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3MvUHJvZHV0b3MvR3JhZmljb3MuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
-[/home/karasu/Pixel_House_Avaliacao/PixelHouse/Views/Produtos/index.cshtml]
+[/home/karasu/Desktop/Pixel_House_Avaliacao/PixelHouse/Views/Produtos/index.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3MvUHJvZHV0b3MvaW5kZXguY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
-[/home/karasu/Pixel_House_Avaliacao/PixelHouse/Views/Produtos/Relatorios.cshtml]
+[/home/karasu/Desktop/Pixel_House_Avaliacao/PixelHouse/Views/Produtos/Relatorios.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3MvUHJvZHV0b3MvUmVsYXRvcmlvcy5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[/home/karasu/Pixel_House_Avaliacao/PixelHouse/Views/Shared/Error.cshtml]
+[/home/karasu/Desktop/Pixel_House_Avaliacao/PixelHouse/Views/Shared/Error.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3MvU2hhcmVkL0Vycm9yLmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[/home/karasu/Pixel_House_Avaliacao/PixelHouse/Views/Shared/_ValidationScriptsPartial.cshtml]
+[/home/karasu/Desktop/Pixel_House_Avaliacao/PixelHouse/Views/Shared/_ValidationScriptsPartial.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3MvU2hhcmVkL19WYWxpZGF0aW9uU2NyaXB0c1BhcnRpYWwuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
-[/home/karasu/Pixel_House_Avaliacao/PixelHouse/Views/_ViewImports.cshtml]
+[/home/karasu/Desktop/Pixel_House_Avaliacao/PixelHouse/Views/_ViewImports.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3MvX1ZpZXdJbXBvcnRzLmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[/home/karasu/Pixel_House_Avaliacao/PixelHouse/Views/_ViewStart.cshtml]
+[/home/karasu/Desktop/Pixel_House_Avaliacao/PixelHouse/Views/_ViewStart.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3MvX1ZpZXdTdGFydC5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[/home/karasu/Pixel_House_Avaliacao/PixelHouse/Views/Shared/_Layout.cshtml]
+[/home/karasu/Desktop/Pixel_House_Avaliacao/PixelHouse/Views/Shared/_Layout.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3MvU2hhcmVkL19MYXlvdXQuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = b-22i0f3iwi5

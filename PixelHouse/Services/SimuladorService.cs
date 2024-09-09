@@ -51,16 +51,20 @@ private async void ExecuteVenda(object? state)
                 // Simula uma venda se o estoque for maior que o mínimo
                 if (produto.QuantidadeEmEstoque > produto.EstoqueMinimo)
                 {
-                    var quantidade = _random.Next(1, Math.Min(11, produto.QuantidadeEmEstoque + 1)); // Garante que a quantidade não exceda o estoque
+                    // Ajusta a quantidade para um valor maior (por exemplo, até 50 unidades)
+                    var quantidade = _random.Next(10, Math.Min(51, produto.QuantidadeEmEstoque + 1));
+                    
                     var venda = new Venda
                     {
                         ProdutoId = produto.Id,
                         Quantidade = quantidade,
                         DataSaida = DateTime.Now
                     };
+                    
                     dbContext.Vendas.Add(venda);
                     produto.QuantidadeEmEstoque -= venda.Quantidade;
 
+                    // Garante que o estoque não fique negativo
                     if (produto.QuantidadeEmEstoque < 0)
                         produto.QuantidadeEmEstoque = 0;
 
@@ -76,7 +80,6 @@ private async void ExecuteVenda(object? state)
         Console.WriteLine($"Erro ao executar vendas: {ex.Message}");
     }
 }
-
 private async void ExecuteCompra(object? state)
 {
     try
@@ -85,19 +88,26 @@ private async void ExecuteCompra(object? state)
         {
             var dbContext = scope.ServiceProvider.GetRequiredService<ApplicationDbContext>();
             var produtos = await dbContext.Produtos.ToListAsync();
+
             foreach (var produto in produtos)
             {
-                var quantidadeParaComprar = _random.Next(5, 21);
-                var compra = new Compra
+                // Verifica se o estoque está abaixo do estoque mínimo ou 10 unidades acima do estoque mínimo
+                if (produto.QuantidadeEmEstoque < produto.EstoqueMinimo || 
+                    produto.QuantidadeEmEstoque > produto.EstoqueMinimo + 10)
                 {
-                    ProdutoId = produto.Id,
-                    Quantidade = quantidadeParaComprar,
-                    DataEntrada = DateTime.Now
-                };
-                dbContext.Compras.Add(compra);
-                produto.QuantidadeEmEstoque += compra.Quantidade;
-                produto.DataEntrada = compra.DataEntrada; // Atualiza a DataEntrada no produto
+                    var quantidadeParaComprar = _random.Next(5, 21);
+                    var compra = new Compra
+                    {
+                        ProdutoId = produto.Id,
+                        Quantidade = quantidadeParaComprar,
+                        DataEntrada = DateTime.Now
+                    };
+                    dbContext.Compras.Add(compra);
+                    produto.QuantidadeEmEstoque += compra.Quantidade;
+                    produto.DataEntrada = compra.DataEntrada; // Atualiza a DataEntrada no produto
+                }
             }
+
             await dbContext.SaveChangesAsync();
         }
     }

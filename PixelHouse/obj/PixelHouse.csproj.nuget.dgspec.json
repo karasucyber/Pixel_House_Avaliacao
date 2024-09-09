@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "/home/karasu/Pixel_House_Avaliacao/PixelHouse/PixelHouse.csproj": {}
+    "/home/karasu/Desktop/Pixel_House_Avaliacao/PixelHouse/PixelHouse.csproj": {}
   },
   "projects": {
-    "/home/karasu/Pixel_House_Avaliacao/PixelHouse/PixelHouse.csproj": {
+    "/home/karasu/Desktop/Pixel_House_Avaliacao/PixelHouse/PixelHouse.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "/home/karasu/Pixel_House_Avaliacao/PixelHouse/PixelHouse.csproj",
+        "projectUniqueName": "/home/karasu/Desktop/Pixel_House_Avaliacao/PixelHouse/PixelHouse.csproj",
         "projectName": "PixelHouse",
-        "projectPath": "/home/karasu/Pixel_House_Avaliacao/PixelHouse/PixelHouse.csproj",
+        "projectPath": "/home/karasu/Desktop/Pixel_House_Avaliacao/PixelHouse/PixelHouse.csproj",
         "packagesPath": "/home/karasu/.nuget/packages/",
-        "outputPath": "/home/karasu/Pixel_House_Avaliacao/PixelHouse/obj/",
+        "outputPath": "/home/karasu/Desktop/Pixel_House_Avaliacao/PixelHouse/obj/",
         "projectStyle": "PackageReference",
         "configFilePaths": [
           "/home/karasu/.nuget/NuGet/NuGet.Config"

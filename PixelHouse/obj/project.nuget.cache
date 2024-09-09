@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "e7YXyZTVUxMjW93VgVm/mMBe1FO5/1oarycmCdVZSyJsFKJu/Zg2I31yikf1ztsxRqhQb+RMtMMbKPF7MDGgEQ==",
+  "dgSpecHash": "SIhSPchUduUdmBgw9V249j+42wAs1hcP5cHhnn52dmgLsNr6uPeiJxt072HI/znh2RyrCb1ZNywuhxsZRHspyA==",
   "success": true,
-  "projectFilePath": "/home/karasu/Pixel_House_Avaliacao/PixelHouse/PixelHouse.csproj",
+  "projectFilePath": "/home/karasu/Desktop/Pixel_House_Avaliacao/PixelHouse/PixelHouse.csproj",
   "expectedPackageFiles": [
     "/home/karasu/.nuget/packages/automapper/13.0.1/automapper.13.0.1.nupkg.sha512",
     "/home/karasu/.nuget/packages/castle.core/5.1.1/castle.core.5.1.1.nupkg.sha512",
