@@ -1,56 +1,108 @@
 @model PixelHouse.Models.Produto
 
-<h1>Criar Produto</h1>
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Criar Produto</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <style>
+        body {
+            font-family: 'Arial', sans-serif;
+            background-color: #f8f9fa;
+            color: #343a40;
+        }
 
-<form asp-controller="Produtos" asp-action="Create" method="post">
-    <div class="form-group">
-        <label asp-for="Nome" class="control-label"></label>
-        <input asp-for="Nome" class="form-control" />
-        <span asp-validation-for="Nome" class="text-danger"></span>
-    </div>
-    <div class="form-group">
-        <label asp-for="Descricao" class="control-label"></label>
-        <input asp-for="Descricao" class="form-control" />
-        <span asp-validation-for="Descricao" class="text-danger"></span>
-    </div>
-    <div class="form-group">
-        <label asp-for="Preco" class="control-label"></label>
-        <input asp-for="Preco" class="form-control" />
-        <span asp-validation-for="Preco" class="text-danger"></span>
-    </div>
-    <div class="form-group">
-        <label asp-for="QuantidadeEmEstoque" class="control-label"></label>
-        <input asp-for="QuantidadeEmEstoque" class="form-control" />
-        <span asp-validation-for="QuantidadeEmEstoque" class="text-danger"></span>
-    </div>
-    <div class="form-group">
-        <label asp-for="EstoqueMinimo" class="control-label"></label>
-        <input asp-for="EstoqueMinimo" class="form-control" />
-        <span asp-validation-for="EstoqueMinimo" class="text-danger"></span>
-    </div>
-    <div class="form-group">
-        <label asp-for="Unidade" class="control-label"></label>
-        <input asp-for="Unidade" class="form-control" />
-        <span asp-validation-for="Unidade" class="text-danger"></span>
-    </div>
-    <div class="form-group">
-        <label asp-for="ICMS" class="control-label"></label>
-        <input asp-for="ICMS" class="form-control" />
-        <span asp-validation-for="ICMS" class="text-danger"></span>
-    </div>
-    <div class="form-group">
-        <label asp-for="CFOP" class="control-label"></label>
-        <input asp-for="CFOP" class="form-control" />
-        <span asp-validation-for="CFOP" class="text-danger"></span>
-    </div>
-    <div class="form-group">
-        <label asp-for="FornecedorPreferencial" class="control-label"></label>
-        <input asp-for="FornecedorPreferencial" class="form-control" />
-        <span asp-validation-for="FornecedorPreferencial" class="text-danger"></span>
-    </div>
+        .container {
+            max-width: 800px;
+            margin: 50px auto;
+            padding: 20px;
+            background-color: #ffffff;
+            border-radius: 8px;
+            box-shadow: 0 8px 16px rgba(0, 0, 0, 0.1);
+        }
 
+        h1 {
+            margin-bottom: 20px;
+            text-align: center;
+        }
 
-    <div class="form-group">
-    <button type="submit" class="btn btn-primary">Salvar</button>
+        .form-group label {
+            font-weight: bold;
+        }
+
+        .btn-primary {
+            background-color: #007bff;
+            border-color: #007bff;
+            transition: background-color 0.3s ease, border-color 0.3s ease;
+        }
+
+        .btn-primary:hover {
+            background-color: #0056b3;
+            border-color: #004085;
+        }
+
+        .text-danger {
+            font-size: 0.875rem;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Criar Produto</h1>
+
+        <form asp-controller="Produtos" asp-action="Create" method="post">
+            <div class="form-group">
+                <label asp-for="Nome" class="control-label">Nome</label>
+                <input asp-for="Nome" class="form-control" placeholder="Nome do produto" />
+                <span asp-validation-for="Nome" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Descricao" class="control-label">Descrição</label>
+                <input asp-for="Descricao" class="form-control" placeholder="Descrição do produto" />
+                <span asp-validation-for="Descricao" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Preco" class="control-label">Preço</label>
+                <input asp-for="Preco" class="form-control" placeholder="Preço do produto" />
+                <span asp-validation-for="Preco" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="QuantidadeEmEstoque" class="control-label">Quantidade em Estoque</label>
+                <input asp-for="QuantidadeEmEstoque" class="form-control" placeholder="Quantidade em estoque" />
+                <span asp-validation-for="QuantidadeEmEstoque" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="EstoqueMinimo" class="control-label">Estoque Mínimo</label>
+                <input asp-for="EstoqueMinimo" class="form-control" placeholder="Estoque mínimo" />
+                <span asp-validation-for="EstoqueMinimo" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Unidade" class="control-label">Unidade</label>
+                <input asp-for="Unidade" class="form-control" placeholder="Unidade do produto" />
+                <span asp-validation-for="Unidade" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="ICMS" class="control-label">ICMS (%)</label>
+                <input asp-for="ICMS" class="form-control" placeholder="Percentual de ICMS" />
+                <span asp-validation-for="ICMS" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="CFOP" class="control-label">CFOP</label>
+                <input asp-for="CFOP" class="form-control" placeholder="Código CFOP" />
+                <span asp-validation-for="CFOP" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="FornecedorPreferencial" class="control-label">Fornecedor Preferencial</label>
+                <input asp-for="FornecedorPreferencial" class="form-control" placeholder="Fornecedor preferencial" />
+                <span asp-validation-for="FornecedorPreferencial" class="text-danger"></span>
+            </div>
+
+            <div class="form-group text-center">
+                <button type="submit" class="btn btn-primary">Salvar</button>
+            </div>
+        </form>
     </div>
-</form>
+</body>
+</html>

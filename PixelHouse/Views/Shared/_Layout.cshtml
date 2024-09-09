@@ -8,12 +8,55 @@
     <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
     <link rel="stylesheet" href="~/css/site.css" asp-append-version="true" />
     <link rel="stylesheet" href="~/PixelHouse.styles.css" asp-append-version="true" />
+    <style>
+        /* Custom Styles */
+        body {
+            font-family: Arial, sans-serif;
+            color: #333;
+            background-color: #f4f4f4;
+        }
+        .navbar {
+            background-color: #343a40;
+        }
+        .navbar-brand,
+        .nav-link {
+            color: #ffffff !important;
+        }
+        .navbar-brand:hover,
+        .nav-link:hover {
+            color: #d3d3d3 !important;
+        }
+        .container {
+            margin-top: 20px;
+        }
+        .footer {
+            padding: 20px;
+            background-color: #343a40;
+            color: #ffffff;
+            text-align: center;
+        }
+        .footer a {
+            color: #d3d3d3;
+        }
+        .footer a:hover {
+            color: #ffffff;
+        }
+        .btn-primary {
+            background-color: #007bff;
+            border-color: #007bff;
+        }
+        .btn-primary:hover {
+            background-color: #0056b3;
+            border-color: #004085;
+        }
+    </style>
 </head>
 
 <body>
     <header>
-        <nav class="navbar navbar-expand-sm navbar-toggleable-sm navbar-light bg-white border-bottom box-shadow mb-3">
+        <nav class="navbar navbar-expand-sm navbar-light">
             <div class="container-fluid">
+                <a class="navbar-brand" href="#">PixelHouse</a>
                 <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target=".navbar-collapse"
                     aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
                     <span class="navbar-toggler-icon"></span>
@@ -21,19 +64,18 @@
                 <div class="navbar-collapse collapse d-sm-inline-flex justify-content-between">
                     <ul class="navbar-nav flex-grow-1">
                         <li class="nav-item">
-                            <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="Create">Produtos</a>
+                            <a class="nav-link" asp-area="" asp-controller="Home" asp-action="Create">Produtos</a>
                         </li>
-                         <li class="nav-item">
-                            <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="Index">Vendas & Compras</a>
-                        </li>
-                        
                         <li class="nav-item">
-                            <a class="nav-link" asp-controller="PDF" asp-action="Relatorios">PDFS</a>
+                            <a class="nav-link" asp-area="" asp-controller="Home" asp-action="Index">Vendas & Compras</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" asp-controller="PDF" asp-action="Relatorios">PDFs</a>
                         </li>
                         <li class="nav-item">
                             <a class="nav-link" asp-controller="Excel" asp-action="Excel">Excel</a>
                         </li>
-                           <li class="nav-item">
+                        <li class="nav-item">
                             <a class="nav-link" asp-controller="Produtos" asp-action="Index">Lista de Produtos</a>
                         </li>
                     </ul>
@@ -47,7 +89,7 @@
         </main>
     </div>
 
-    <footer class="border-top footer text-muted">
+    <footer class="footer">
         <div class="container">
             &copy; 2024 - PixelHouse - <a asp-area="" asp-controller="Home" asp-action="Privacy">Privacy</a>
         </div>

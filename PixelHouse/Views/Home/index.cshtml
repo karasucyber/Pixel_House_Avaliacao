@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Simulador de Vendas e Compras</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            line-height: 1.6;
+            margin: 20px;
+        }
+
+        h1,
+        h2 {
+            color: #333;
+            font-size: 34px;
+        }
+
+        p {
+            margin: 10px 0;
+            font-size:18px;
+        }
+
+        ul {
+            font-size: 18px;
+            margin-left: 20px;
+        }
+
+        .section {
+            margin-bottom: 40px;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="section">
+        <h1>Simulador de Compras e Vendas automatico</h1>
+
+        <p>Desenvolvi um simulador de compras e vendas que funciona como uma API, com o objetivo de servir como um
+            gerenciador de estoque e gerador de relatórios. A ideia é que esses relatórios reflitam com maior precisão
+            as condições do mundo real, tornando o sistema mais eficiente e realista.</p>
+
+    </div>
+
+
+
+    <div class="section">
+        <h2>Função de Simulação de Vendas</h2>
+        <p><strong>ExecuteVenda:</strong> A função é executada a cada 30 segundos, simulando a venda de produtos. Ela
+            realiza as seguintes operações:</p>
+        <ul>
+            <li>Acessa o banco de dados para obter a lista de produtos disponíveis.</li>
+            <li>Escolhe um produto aleatoriamente.</li>
+            <li>Verifica se o produto possui estoque suficiente (acima do valor mínimo).</li>
+            <li>Gera uma venda com uma quantidade aleatória (até o limite do estoque disponível).</li>
+            <li>Atualiza a quantidade do produto no estoque e registra a data de saída.</li>
+            <li>Salva as alterações no banco de dados.</li>
+        </ul>
+    </div>
+
+    <div class="section">
+        <h2>Função de Simulação de Compras</h2>
+        <p><strong>ExecuteCompra:</strong> A função é executada a cada 1 minuto, simulando a compra de produtos. Ela
+            realiza as seguintes operações:</p>
+        <ul>
+            <li>Acessa o banco de dados para obter a lista de produtos.</li>
+            <li>Para cada produto, gera uma compra com uma quantidade aleatória entre 5 e 20 unidades.</li>
+            <li>Atualiza o estoque do produto com a nova quantidade adquirida e registra a data de entrada.</li>
+            <li>Salva as alterações no banco de dados.</li>
+        </ul>
+    </div>
+
+    <div class="section">
+        <h2>Controle do Ciclo de Vida</h2>
+        <p>O controle do ciclo de vida do simulador envolve a inicialização, execução e finalização das simulações de
+            vendas e compras, com os métodos abaixo:</p>
+        <ul>
+            <li><strong>StartAsync:</strong> Método chamado quando o serviço é iniciado. Ele inicializa dois timers:
+                <ul>
+                    <li>Um para executar a simulação de vendas a cada 30 segundos.</li>
+                    <li>Outro para executar a simulação de compras a cada 1 minuto.</li>
+                </ul>
+            </li>
+            <li><strong>StopAsync:</strong> Método chamado quando o serviço é interrompido. Ele desativa os timers para
+                parar as simulações.</li>
+            <li><strong>Dispose:</strong> Método usado para liberar os recursos dos timers quando o serviço é
+                finalizado.</li>
+        </ul>
+    </div>
+
+</body>
+
+</html>
