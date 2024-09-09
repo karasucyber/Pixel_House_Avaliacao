@@ -12,6 +12,7 @@
             font-family: 'Arial', sans-serif;
             background-color: #f8f9fa;
             color: #343a40;
+            width: 1000px;
         }
 
         h1 {
@@ -25,6 +26,7 @@
             background-color: #ffffff;
             border-radius: 5px;
             box-shadow: 0 8px 16px rgba(0, 0, 0, 0.1);
+            width: 100%; /* Faz a tabela ocupar toda a largura do contêiner */
         }
 
         .table thead {
@@ -32,17 +34,20 @@
             color: white;
         }
 
+        .table thead th, .table tbody td {
+            width: 150px; /* Define a largura das células como 150px */
+            text-align: center;
+            overflow: hidden; /* Garante que o texto não ultrapasse a largura */
+            text-overflow: ellipsis; /* Adiciona reticências se o texto for longo */
+            white-space: nowrap; /* Impede a quebra de linha dentro das células */
+        }
+
         .table thead th {
             font-weight: bold;
-            text-align: center;
         }
 
         .table tbody tr:nth-child(even) {
             background-color: #f2f2f2;
-        }
-
-        .table tbody td {
-            text-align: center;
         }
 
         .btn-primary, .btn-danger {
@@ -72,8 +77,8 @@
         }
 
         .container {
-            max-width: 1200px;
-            margin: 50px auto;
+            max-width: 1200px; /* Define uma largura máxima opcional */
+            margin: 50px auto; /* Centraliza o contêiner horizontalmente */
             padding: 20px;
         }
     </style>

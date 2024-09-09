@@ -53,7 +53,6 @@ public class PdfController : Controller
                             {
                                 table.Cell().Text(produto.Id.ToString());
                                 table.Cell().Text(produto.Nome);
-                                table.Cell().Text(produto.Descricao ?? string.Empty);
                                 table.Cell().Text(produto.QuantidadeEmEstoque.ToString());
                             }
                         });
@@ -80,13 +79,12 @@ public class PdfController : Controller
             .OrderByDescending(p => p.TotalVendido)
             .ToListAsync();
 
-        var produtos = _context.Produtos.ToList();
+        var produtos = await _context.Produtos.ToListAsync();
         var produtosMaisVendidos = vendas
             .Join(produtos, v => v.ProdutoId, p => p.Id, (v, p) => new
             {
                 p.Id,
                 p.Nome,
-                p.Descricao,
                 TotalVendido = v.TotalVendido
             })
             .ToList();
@@ -123,7 +121,6 @@ public class PdfController : Controller
                             {
                                 table.Cell().Text(produto.Id.ToString());
                                 table.Cell().Text(produto.Nome);
-                                table.Cell().Text(produto.Descricao ?? string.Empty);
                                 table.Cell().Text(produto.TotalVendido.ToString());
                             }
                         });
@@ -147,16 +144,15 @@ public class PdfController : Controller
                 ProdutoId = g.Key,
                 TotalComprado = g.Sum(c => c.Quantidade)
             })
-            .OrderByDescending(p => p.TotalComprado)
+            .OrderByDescending(c => c.TotalComprado)
             .ToListAsync();
 
-        var produtos = _context.Produtos.ToList();
+        var produtos = await _context.Produtos.ToListAsync();
         var produtosMaisComprados = compras
             .Join(produtos, c => c.ProdutoId, p => p.Id, (c, p) => new
             {
                 p.Id,
                 p.Nome,
-                p.Descricao,
                 TotalComprado = c.TotalComprado
             })
             .ToList();
@@ -193,7 +189,6 @@ public class PdfController : Controller
                             {
                                 table.Cell().Text(produto.Id.ToString());
                                 table.Cell().Text(produto.Nome);
-                                table.Cell().Text(produto.Descricao ?? string.Empty);
                                 table.Cell().Text(produto.TotalComprado.ToString());
                             }
                         });
@@ -248,7 +243,6 @@ public class PdfController : Controller
                             {
                                 table.Cell().Text(produto.Id.ToString());
                                 table.Cell().Text(produto.Nome);
-                                table.Cell().Text(produto.Descricao ?? string.Empty);
                                 table.Cell().Text(produto.QuantidadeEmEstoque.ToString());
                                 table.Cell().Text(produto.EstoqueMinimo.ToString());
                             }
@@ -264,7 +258,6 @@ public class PdfController : Controller
         return File(stream.ToArray(), "application/pdf", "ProdutosComEstoqueBaixo.pdf");
     }
 
-    
     public async Task<IActionResult> ProdutosComPoucasVendas()
     {
         var vendas = await _context.Vendas
@@ -277,13 +270,12 @@ public class PdfController : Controller
             .OrderBy(p => p.TotalVendido) // Ordenar de forma crescente para pegar os produtos com menos vendas
             .ToListAsync();
 
-        var produtos = _context.Produtos.ToList();
+        var produtos = await _context.Produtos.ToListAsync();
         var produtosComPoucasVendas = vendas
             .Join(produtos, v => v.ProdutoId, p => p.Id, (v, p) => new
             {
                 p.Id,
                 p.Nome,
-                p.Descricao,
                 TotalVendido = v.TotalVendido
             })
             .Where(p => p.TotalVendido > 0) // Excluir produtos não vendidos
@@ -321,7 +313,6 @@ public class PdfController : Controller
                             {
                                 table.Cell().Text(produto.Id.ToString());
                                 table.Cell().Text(produto.Nome);
-                                table.Cell().Text(produto.Descricao ?? string.Empty);
                                 table.Cell().Text(produto.TotalVendido.ToString());
                             }
                         });

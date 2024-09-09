@@ -211,6 +211,83 @@ public class ExcelController : Controller
         }
     }
 
+    public IActionResult ProdutosComPoucasVendas()
+{
+    // Buscar as vendas e contar o total vendido para cada produto
+    var vendas = _context.Vendas
+        .GroupBy(v => v.ProdutoId)
+        .Select(g => new
+        {
+            ProdutoId = g.Key,
+            TotalVendido = g.Sum(v => v.Quantidade)
+        })
+        .OrderBy(v => v.TotalVendido) // Ordenar pelo total vendido, do menor para o maior
+        .ToList();
+
+    // Buscar os produtos
+    var produtos = _context.Produtos.ToList();
+
+    // Juntar as vendas com os produtos e pegar os produtos com menos vendas
+    var produtosComPoucasVendas = vendas
+        .Join(produtos, v => v.ProdutoId, p => p.Id, (v, p) => new
+        {
+            p.Id,
+            p.Nome,
+            p.Descricao,
+            p.Preco,
+            TotalVendido = v.TotalVendido
+        })
+        .ToList();
+
+    // Criar e configurar a planilha Excel
+    using (var package = new ExcelPackage())
+    {
+        var worksheet = package.Workbook.Worksheets.Add("Produtos com Poucas Vendas");
+
+        // Cabeçalhos
+        var headers = new[]
+        {
+            "ID", "Nome", "Descrição", "Preço", "Total Vendido"
+        };
+        for (int i = 0; i < headers.Length; i++)
+        {
+            var cell = worksheet.Cells[1, i + 1];
+            cell.Value = headers[i];
+            cell.Style.Font.Bold = true;
+            cell.Style.Border.Bottom.Style = ExcelBorderStyle.Thin;
+            cell.Style.Fill.PatternType = ExcelFillStyle.Solid;
+            cell.Style.Fill.BackgroundColor.SetColor(System.Drawing.Color.LightGray);
+            cell.Style.HorizontalAlignment = ExcelHorizontalAlignment.Center;
+            cell.Style.VerticalAlignment = ExcelVerticalAlignment.Center;
+            cell.Style.Border.Left.Style = ExcelBorderStyle.Thin;
+            cell.Style.Border.Right.Style = ExcelBorderStyle.Thin;
+        }
+
+        // Dados
+        for (int i = 0; i < produtosComPoucasVendas.Count; i++)
+        {
+            var produto = produtosComPoucasVendas[i];
+            var row = i + 2;
+            worksheet.Cells[row, 1].Value = produto.Id;
+            worksheet.Cells[row, 2].Value = produto.Nome;
+            worksheet.Cells[row, 3].Value = produto.Descricao;
+            worksheet.Cells[row, 4].Value = produto.Preco;
+            worksheet.Cells[row, 5].Value = produto.TotalVendido;
+        }
+
+        // Ajustar largura das colunas
+        worksheet.Cells[worksheet.Dimension.Address].AutoFitColumns();
+
+        var stream = new MemoryStream();
+        package.SaveAs(stream);
+        stream.Position = 0;
+
+        return File(stream.ToArray(), "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet", "ProdutosComPoucasVendas.xlsx");
+    }
+}
+
+
+
     public IActionResult ProdutosComEstoqueBaixo()
     {
         var produtos = _context.Produtos
