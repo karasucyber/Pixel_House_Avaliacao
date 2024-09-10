@@ -59,7 +59,7 @@ Bem-vindo ao projeto Pixel House Avaliação! Este projeto foi desenvolvido com 
 
 3. **Navegar até a pasta do projeto:**
    ```bash
-   cd Pixel_House_Avaliacao
+   Pixel_House_Avaliacao/PixelHouse
    ```
 
 4. **Restaurar pacotes e construir o projeto:**
